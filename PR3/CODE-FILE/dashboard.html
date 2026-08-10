@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Event Manager</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>Event Manager</h1>
+    <ul class="nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="registration.html">Registration</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="feedback.html">Feedback</a></li>
+    </ul>
+  </header>
+
+  <main class="main">
+    <h2 class="page-title">Dashboard</h2>
+
+    <!-- Stats grid using CSS Grid -->
+    <section class="dashboard-grid">
+      <div class="stat-card">
+        <h3>12</h3>
+        <p>Total Events</p>
+      </div>
+      <div class="stat-card">
+        <h3>250</h3>
+        <p>Registrations</p>
+      </div>
+      <div class="stat-card">
+        <h3>8</h3>
+        <p>Upcoming</p>
+      </div>
+      <div class="stat-card">
+        <h3>4</h3>
+        <p>Completed</p>
+      </div>
+    </section>
+
+    <!-- Dashboard content using Flexbox -->
+    <section class="dashboard-content">
+      <div class="card">
+        <h3>Recent Activity</h3>
+        <ul class="list-group list-group-flush mt-2">
+          <li class="list-group-item">New registration for Hackathon</li>
+          <li class="list-group-item">AI Seminar updated</li>
+          <li class="list-group-item">Tech Fest announced</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Quick Actions</h3>
+        <div class="d-grid gap-2 mt-3">
+          <a href="registration.html" class="btn">Add Registration</a>
+          <a href="events.html" class="btn">View Events</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Event Manager</p>
+    <p>Practical 3 - Responsive UI Design</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

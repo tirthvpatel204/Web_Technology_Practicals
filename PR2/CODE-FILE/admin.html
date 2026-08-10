@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - StudentHub</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header>
+        <h1>StudentHub - Admin</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="admin.html">Admin</a></li>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <nav class="breadcrumb">
+        <p><a href="index.html">Home</a> &gt; Admin</p>
+    </nav>
+
+    <main id="main-content">
+        <section>
+            <h2>Admin Panel</h2>
+            <p>Manage students and events from here.</p>
+        </section>
+
+        <section>
+            <h2>Student List</h2>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                </tr>
+                <tr>
+                    <td>001</td>
+                    <td>John Doe</td>
+                    <td>AIML</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Jane Smith</td>
+                    <td>CSE</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Robert Brown</td>
+                    <td>ECE</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Add Event</h2>
+            <form>
+                <label for="event-name">Event Name:</label>
+                <input type="text" id="event-name" name="event-name" required>
+
+                <label for="event-date">Date:</label>
+                <input type="date" id="event-date" name="event-date" required>
+
+                <br><br>
+                <button type="submit">Add Event</button>
+            </form>
+        </section>
+    </main>
+
+    <aside>
+        <h2>Admin Menu</h2>
+        <ul>
+            <li>Manage Students</li>
+            <li>Manage Events</li>
+            <li><a href="feedback.html">View Feedback</a></li>
+        </ul>
+    </aside>
+
+    <footer>
+        <p>2026 StudentHub. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

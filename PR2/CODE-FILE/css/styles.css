@@ -1,0 +1,114 @@
+/* Simple CSS for StudentHub */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.breadcrumb {
+    background-color: lightgray;
+    padding: 8px;
+}
+
+main {
+    padding: 15px;
+    background-color: white;
+    margin: 10px;
+}
+
+section {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid gray;
+}
+
+article {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+aside {
+    background-color: white;
+    padding: 15px;
+    margin: 10px;
+    border: 1px solid gray;
+}
+
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+footer a {
+    color: yellow;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input, select, textarea {
+    width: 250px;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+th {
+    background-color: blue;
+    color: white;
+}
+
+.skip-link {
+    background-color: blue;
+    color: white;
+    padding: 5px;
+}
