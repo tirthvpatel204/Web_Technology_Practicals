@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Advanced JavaScript DOM Practical">
+
+    <title>Advanced JavaScript UI</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ================= NOTIFICATION ================= -->
+
+    <div id="notification"
+         class="notification"
+         role="alert">
+
+        <span>
+            🎉 Welcome! Explore our interactive webpage.
+        </span>
+
+        <button id="closeNotification"
+                aria-label="Close notification">
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <div class="logo">
+            <span>JS</span>
+            Interactive
+        </div>
+
+
+        <button id="menuButton"
+                class="menu-button"
+                aria-label="Open menu"
+                aria-expanded="false">
+            ☰
+        </button>
+
+
+        <nav id="navbar">
+
+            <a href="#home" class="nav-link active">
+                Home
+            </a>
+
+            <a href="#features" class="nav-link">
+                Features
+            </a>
+
+            <a href="#slider" class="nav-link">
+                Slider
+            </a>
+
+            <a href="#faq" class="nav-link">
+                FAQ
+            </a>
+
+            <a href="#contact" class="nav-link">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <button id="themeButton"
+                class="theme-button"
+                aria-label="Change theme">
+
+            🌙
+
+        </button>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-content">
+
+                <p class="tag">
+                    JAVASCRIPT PRACTICAL 4
+                </p>
+
+                <h1>
+                    Build Interactive
+                    <span>Web Experiences</span>
+                </h1>
+
+                <p>
+                    DOM manipulation, event handling,
+                    localStorage, animations and accessibility
+                    in one advanced project.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button id="openModal"
+                            class="primary-btn">
+                        Explore Project
+                    </button>
+
+                    <a href="#features"
+                       class="secondary-btn">
+                        View Features
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FEATURES ================= -->
+
+        <section id="features">
+
+            <div class="section-heading">
+
+                <p>WHAT WE USE</p>
+
+                <h2>
+                    Interactive Features
+                </h2>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+
+                    <div class="icon">🧩</div>
+
+                    <h3>DOM Manipulation</h3>
+
+                    <p>
+                        Select and modify HTML elements
+                        dynamically using JavaScript.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="icon">⚡</div>
+
+                    <h3>Event Handling</h3>
+
+                    <p>
+                        Handle click, keyboard and
+                        user interaction events.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="icon">💾</div>
+
+                    <h3>localStorage</h3>
+
+                    <p>
+                        Save user preferences and
+                        restore them after refresh.
+                    </p>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="icon">♿</div>
+
+                    <h3>Accessibility</h3>
+
+                    <p>
+                        Keyboard-friendly controls and
+                        ARIA attributes improve usability.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SLIDER ================= -->
+
+        <section id="slider">
+
+            <div class="section-heading">
+
+                <p>CONTENT SLIDER</p>
+
+                <h2>
+                    Learn JavaScript
+                </h2>
+
+            </div>
+
+
+            <div class="slider-container">
+
+                <div class="slide">
+
+                    <div class="slide-number">
+                        01
+                    </div>
+
+                    <h3 id="slideTitle">
+                        DOM Manipulation
+                    </h3>
+
+                    <p id="slideText">
+                        JavaScript can select,
+                        modify and create HTML elements.
+                    </p>
+
+                </div>
+
+
+                <button id="previous"
+                        class="slider-btn"
+                        aria-label="Previous slide">
+                    ←
+                </button>
+
+
+                <button id="next"
+                        class="slider-btn"
+                        aria-label="Next slide">
+                    →
+                </button>
+
+
+                <div id="indicators"
+                     class="indicators">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FAQ ================= -->
+
+        <section id="faq">
+
+            <div class="section-heading">
+
+                <p>FAQ</p>
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+            </div>
+
+
+            <div class="faq-container">
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question"
+                            aria-expanded="false">
+
+                        <span>
+                            What is DOM?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            DOM stands for Document Object Model.
+                            It represents the HTML document as a tree
+                            of objects that JavaScript can manipulate.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question"
+                            aria-expanded="false">
+
+                        <span>
+                            What is Event Handling?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            Event handling allows JavaScript to
+                            respond to user actions such as clicks,
+                            keyboard input and mouse movements.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question"
+                            aria-expanded="false">
+
+                        <span>
+                            Why use localStorage?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            localStorage stores data inside the
+                            browser and keeps it even after the
+                            page is refreshed.
+                        </p>
+
+                    </div>
+
+                </article>
+
+
+                <article class="faq-item">
+
+                    <button class="faq-question"
+                            aria-expanded="false">
+
+                        <span>
+                            How does Dark Mode work?
+                        </span>
+
+                        <span class="faq-icon">
+                            +
+                        </span>
+
+                    </button>
+
+                    <div class="faq-answer">
+
+                        <p>
+                            JavaScript adds or removes a CSS class
+                            from the body and saves the selected
+                            theme using localStorage.
+                        </p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTACT ================= -->
+
+        <section id="contact">
+
+            <div class="section-heading">
+
+                <p>CONTACT</p>
+
+                <h2>
+                    Send a Message
+                </h2>
+
+            </div>
+
+
+            <form id="contactForm">
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Name
+                    </label>
+
+                    <input type="text"
+                           id="name"
+                           placeholder="Enter your name"
+                           required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input type="email"
+                           id="email"
+                           placeholder="Enter your email"
+                           required>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea id="message"
+                              rows="5"
+                              placeholder="Write your message"
+                              required>
+                    </textarea>
+
+                </div>
+
+
+                <button type="submit"
+                        class="primary-btn">
+                    Send Message
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="modal"
+         class="modal"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="modalTitle">
+
+        <div class="modal-content">
+
+            <button id="closeModal"
+                    class="close-btn"
+                    aria-label="Close modal">
+                ×
+            </button>
+
+            <div class="modal-icon">
+                🚀
+            </div>
+
+            <h2 id="modalTitle">
+                Advanced JavaScript Project
+            </h2>
+
+            <p>
+                This project demonstrates DOM manipulation,
+                event handling, localStorage, responsive UI
+                and accessibility.
+            </p>
+
+            <button id="modalOk"
+                    class="primary-btn">
+                Got it!
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div id="toast"
+         class="toast"
+         role="status">
+
+        <span id="toastMessage">
+            Success!
+        </span>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            JavaScript Practical 4
+        </p>
+
+        <p id="currentDate"></p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
