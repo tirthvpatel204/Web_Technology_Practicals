@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Registration Form with Frontend Validation">
+    <title>Student Registration | Practical 5</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <main class="container">
+
+        <section class="form-card">
+
+            <!-- Header -->
+            <header class="form-header">
+
+                <div class="logo">
+                    🎓
+                </div>
+
+                <div>
+                    <h1>Student Registration</h1>
+                    <p>Create your student account</p>
+                </div>
+
+            </header>
+
+            <!-- Progress -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <form id="registrationForm" novalidate>
+
+                <!-- =====================================
+                     PERSONAL INFORMATION
+                ====================================== -->
+
+                <div class="section-title">
+                    <span>01</span>
+                    <h2>Personal Information</h2>
+                </div>
+
+                <div class="form-grid">
+
+                    <!-- Name -->
+                    <div class="input-group full">
+
+                        <label for="name">
+                            Full Name <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">👤</span>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+                        <small class="error" id="nameError"></small>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="input-group">
+
+                        <label for="email">
+                            Email Address <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">✉️</span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="example@email.com"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                        <small class="error" id="emailError"></small>
+
+                    </div>
+
+
+                    <!-- Mobile -->
+                    <div class="input-group">
+
+                        <label for="mobile">
+                            Mobile Number <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">📱</span>
+
+                            <input
+                                type="tel"
+                                id="mobile"
+                                name="mobile"
+                                placeholder="10 digit mobile number"
+                                maxlength="10"
+                                autocomplete="tel"
+                            >
+
+                        </div>
+
+                        <small class="error" id="mobileError"></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     ACADEMIC INFORMATION
+                ====================================== -->
+
+                <div class="section-title">
+                    <span>02</span>
+                    <h2>Academic Information</h2>
+                </div>
+
+                <div class="form-grid">
+
+                    <!-- Course -->
+                    <div class="input-group">
+
+                        <label for="course">
+                            Course <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper select-wrapper">
+
+                            <span class="input-icon">🎓</span>
+
+                            <select id="course" name="course">
+
+                                <option value="">
+                                    Select your course
+                                </option>
+
+                                <option value="B.Tech AI & ML">
+                                    B.Tech AI & ML
+                                </option>
+
+                                <option value="B.Tech Computer Engineering">
+                                    B.Tech Computer Engineering
+                                </option>
+
+                                <option value="B.Tech IT">
+                                    B.Tech IT
+                                </option>
+
+                                <option value="BCA">
+                                    BCA
+                                </option>
+
+                                <option value="MCA">
+                                    MCA
+                                </option>
+
+                                <option value="B.Sc">
+                                    B.Sc
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <small class="error" id="courseError"></small>
+
+                    </div>
+
+
+                    <!-- Year -->
+                    <div class="input-group">
+
+                        <label for="year">
+                            Academic Year <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper select-wrapper">
+
+                            <span class="input-icon">📚</span>
+
+                            <select id="year" name="year">
+
+                                <option value="">
+                                    Select year
+                                </option>
+
+                                <option value="1st Year">
+                                    1st Year
+                                </option>
+
+                                <option value="2nd Year">
+                                    2nd Year
+                                </option>
+
+                                <option value="3rd Year">
+                                    3rd Year
+                                </option>
+
+                                <option value="4th Year">
+                                    4th Year
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <small class="error" id="yearError"></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Gender -->
+
+                <div class="input-group gender-group">
+
+                    <label>
+                        Gender <span>*</span>
+                    </label>
+
+                    <div class="gender-options">
+
+                        <label class="gender-card">
+
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Male"
+                            >
+
+                            <span class="gender-content">
+                                <span>👨</span>
+                                Male
+                            </span>
+
+                        </label>
+
+
+                        <label class="gender-card">
+
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Female"
+                            >
+
+                            <span class="gender-content">
+                                <span>👩</span>
+                                Female
+                            </span>
+
+                        </label>
+
+
+                        <label class="gender-card">
+
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Other"
+                            >
+
+                            <span class="gender-content">
+                                <span>🧑</span>
+                                Other
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                    <small
+                        class="error"
+                        id="genderError"
+                    ></small>
+
+                </div>
+
+
+                <!-- =====================================
+                     ACCOUNT SECURITY
+                ====================================== -->
+
+                <div class="section-title">
+                    <span>03</span>
+                    <h2>Account Security</h2>
+                </div>
+
+                <div class="form-grid">
+
+                    <!-- Password -->
+                    <div class="input-group">
+
+                        <label for="password">
+                            Password <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔒</span>
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Create a strong password"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+
+                        <!-- Strength -->
+                        <div class="strength-container">
+
+                            <div class="strength-bar">
+                                <div id="strengthFill"></div>
+                            </div>
+
+                            <span id="strengthText">
+                                Password strength
+                            </span>
+
+                        </div>
+
+
+                        <small class="password-hint">
+                            Use 8+ characters with uppercase,
+                            lowercase, number and special character.
+                        </small>
+
+                        <small
+                            class="error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+                    <div class="input-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password <span>*</span>
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">🔐</span>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Re-enter your password"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="confirmToggle"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="error"
+                            id="confirmPasswordError"
+                        ></small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     TERMS
+                ====================================== -->
+
+                <div class="terms-container">
+
+                    <label class="checkbox-label">
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                        >
+
+                        <span class="custom-checkbox"></span>
+
+                        <span>
+                            I agree to the
+                            <a href="#" onclick="return false;">
+                                Terms & Conditions
+                            </a>
+                            and
+                            <a href="#" onclick="return false;">
+                                Privacy Policy
+                            </a>.
+                        </span>
+
+                    </label>
+
+                    <small
+                        class="error"
+                        id="termsError"
+                    ></small>
+
+                </div>
+
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+
+                    <span>
+                        Complete Registration
+                    </span>
+
+                    <span class="arrow">
+                        →
+                    </span>
+
+                </button>
+
+
+                <!-- Success -->
+                <div
+                    id="successMessage"
+                    class="success-message"
+                    role="alert"
+                >
+
+                    <span class="success-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Registration Successful!
+                        </strong>
+
+                        <p>
+                            Your student account has been
+                            created successfully.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+
+            <!-- Footer -->
+            <footer>
+
+                <p>
+                    Practical 5 • Frontend Validation
+                </p>
+
+                <span>
+                    HTML5 • CSS3 • JavaScript
+                </span>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
