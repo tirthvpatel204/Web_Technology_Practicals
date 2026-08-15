@@ -1,3 +1,7 @@
+"use strict";
+
+/* ================= ELEMENTS ================= */
+
 const form = document.getElementById("registrationForm");
 
 const nameInput = document.getElementById("name");
@@ -6,121 +10,108 @@ const mobileInput = document.getElementById("mobile");
 const courseInput = document.getElementById("course");
 const yearInput = document.getElementById("year");
 const passwordInput = document.getElementById("password");
-const confirmPasswordInput =
-    document.getElementById("confirmPassword");
+const confirmPasswordInput = document.getElementById("confirmPassword");
+const captchaInput = document.getElementById("captchaInput");
+const termsInput = document.getElementById("terms");
 
-const termsInput =
-    document.getElementById("terms");
+const strengthFill = document.getElementById("strengthFill");
+const strengthText = document.getElementById("strengthText");
 
-const progressBar =
-    document.getElementById("progressBar");
+const successMessage = document.getElementById("successMessage");
 
-const strengthFill =
-    document.getElementById("strengthFill");
+let captchaCode = "";
 
-const strengthText =
-    document.getElementById("strengthText");
+/* ================= REGEX ================= */
 
-const successMessage =
-    document.getElementById("successMessage");
+const patterns = {
 
+    name: /^[A-Za-zÀ-ÿ]+(?:[ '-][A-Za-zÀ-ÿ]+){1,49}$/,
 
-/* =========================================
-   REGEX
-========================================= */
+    email: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
 
-const nameRegex =
-    /^[A-Za-z ]{2,50}$/;
+    mobile: /^[6-9]\d{9}$/,
 
-const emailRegex =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    passwordUpper: /[A-Z]/,
 
-const mobileRegex =
-    /^[6-9][0-9]{9}$/;
+    passwordLower: /[a-z]/,
 
-const passwordRegex =
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    passwordNumber: /[0-9]/,
 
+    passwordSpecial: /[^A-Za-z0-9]/
 
-/* =========================================
-   ERROR / SUCCESS
-========================================= */
+};
 
-function showError(
-    input,
-    errorId,
-    message
-) {
+/* ================= ERROR HANDLING ================= */
 
-    const error =
-        document.getElementById(errorId);
+function showError(input, errorId, message) {
 
-    error.textContent = message;
+    const errorElement = document.getElementById(errorId);
 
-    const wrapper =
-        input.closest(".input-wrapper");
+    if (errorElement) {
+        errorElement.textContent = message;
+    }
 
-    if (wrapper) {
+    if (input) {
 
-        wrapper.classList.remove("valid");
+        const wrapper = input.closest(".input-wrapper");
 
-        wrapper.classList.add("invalid");
+        if (wrapper) {
+            wrapper.classList.add("invalid");
+            wrapper.classList.remove("valid");
+        }
+
+        input.setAttribute("aria-invalid", "true");
     }
 }
 
 
-function showSuccess(
-    input,
-    errorId
-) {
+function showSuccess(input, errorId) {
 
-    const error =
-        document.getElementById(errorId);
+    const errorElement = document.getElementById(errorId);
 
-    error.textContent = "";
+    if (errorElement) {
+        errorElement.textContent = "";
+    }
 
-    const wrapper =
-        input.closest(".input-wrapper");
+    if (input) {
 
-    if (wrapper) {
+        const wrapper = input.closest(".input-wrapper");
 
-        wrapper.classList.remove("invalid");
+        if (wrapper) {
+            wrapper.classList.remove("invalid");
+            wrapper.classList.add("valid");
+        }
 
-        wrapper.classList.add("valid");
+        input.setAttribute("aria-invalid", "false");
     }
 }
 
 
-function clearValidation(
-    input,
-    errorId
-) {
+function clearValidation(input, errorId) {
 
-    const error =
-        document.getElementById(errorId);
+    const errorElement = document.getElementById(errorId);
 
-    error.textContent = "";
+    if (errorElement) {
+        errorElement.textContent = "";
+    }
 
-    const wrapper =
-        input.closest(".input-wrapper");
+    if (input) {
 
-    if (wrapper) {
+        const wrapper = input.closest(".input-wrapper");
 
-        wrapper.classList.remove("valid");
+        if (wrapper) {
+            wrapper.classList.remove("invalid", "valid");
+        }
 
-        wrapper.classList.remove("invalid");
+        input.removeAttribute("aria-invalid");
     }
 }
 
-
-/* =========================================
-   NAME
-========================================= */
+/* ================= NAME VALIDATION ================= */
 
 function validateName() {
 
-    const value =
-        nameInput.value.trim();
+    const value = nameInput.value.trim();
 
     if (value === "") {
 
@@ -133,34 +124,38 @@ function validateName() {
         return false;
     }
 
-    if (!nameRegex.test(value)) {
+    if (value.length < 2) {
 
         showError(
             nameInput,
             "nameError",
-            "Name should contain only letters and spaces."
+            "Name must contain at least 2 characters."
         );
 
         return false;
     }
 
-    showSuccess(
-        nameInput,
-        "nameError"
-    );
+    if (!patterns.name.test(value)) {
+
+        showError(
+            nameInput,
+            "nameError",
+            "Please enter a valid name using letters only."
+        );
+
+        return false;
+    }
+
+    showSuccess(nameInput, "nameError");
 
     return true;
 }
 
-
-/* =========================================
-   EMAIL
-========================================= */
+/* ================= EMAIL VALIDATION ================= */
 
 function validateEmail() {
 
-    const value =
-        emailInput.value.trim();
+    const value = emailInput.value.trim();
 
     if (value === "") {
 
@@ -173,7 +168,7 @@ function validateEmail() {
         return false;
     }
 
-    if (!emailRegex.test(value)) {
+    if (!patterns.email.test(value)) {
 
         showError(
             emailInput,
@@ -184,23 +179,16 @@ function validateEmail() {
         return false;
     }
 
-    showSuccess(
-        emailInput,
-        "emailError"
-    );
+    showSuccess(emailInput, "emailError");
 
     return true;
 }
 
-
-/* =========================================
-   MOBILE
-========================================= */
+/* ================= MOBILE VALIDATION ================= */
 
 function validateMobile() {
 
-    const value =
-        mobileInput.value.trim();
+    const value = mobileInput.value.trim();
 
     if (value === "") {
 
@@ -213,7 +201,7 @@ function validateMobile() {
         return false;
     }
 
-    if (!mobileRegex.test(value)) {
+    if (!patterns.mobile.test(value)) {
 
         showError(
             mobileInput,
@@ -224,18 +212,12 @@ function validateMobile() {
         return false;
     }
 
-    showSuccess(
-        mobileInput,
-        "mobileError"
-    );
+    showSuccess(mobileInput, "mobileError");
 
     return true;
 }
 
-
-/* =========================================
-   COURSE
-========================================= */
+/* ================= COURSE ================= */
 
 function validateCourse() {
 
@@ -250,18 +232,12 @@ function validateCourse() {
         return false;
     }
 
-    showSuccess(
-        courseInput,
-        "courseError"
-    );
+    showSuccess(courseInput, "courseError");
 
     return true;
 }
 
-
-/* =========================================
-   YEAR
-========================================= */
+/* ================= YEAR ================= */
 
 function validateYear() {
 
@@ -270,127 +246,121 @@ function validateYear() {
         showError(
             yearInput,
             "yearError",
-            "Please select your academic year."
+            "Please select your current year."
         );
 
         return false;
     }
 
-    showSuccess(
-        yearInput,
-        "yearError"
-    );
+    showSuccess(yearInput, "yearError");
 
     return true;
 }
 
-
-/* =========================================
-   GENDER
-========================================= */
+/* ================= GENDER ================= */
 
 function validateGender() {
 
     const selectedGender =
-        document.querySelector(
-            'input[name="gender"]:checked'
-        );
+        document.querySelector('input[name="gender"]:checked');
 
-    const error =
-        document.getElementById(
-            "genderError"
-        );
+    const errorElement =
+        document.getElementById("genderError");
 
     if (!selectedGender) {
 
-        error.textContent =
+        errorElement.textContent =
             "Please select your gender.";
 
         return false;
     }
 
-    error.textContent = "";
+    errorElement.textContent = "";
 
     return true;
 }
 
-
-/* =========================================
-   PASSWORD STRENGTH
-========================================= */
+/* ================= PASSWORD STRENGTH ================= */
 
 function checkPasswordStrength() {
 
-    const password =
-        passwordInput.value;
+    const password = passwordInput.value;
 
-    let score = 0;
+    const rules = {
 
-    if (password.length >= 8) {
-        score++;
-    }
+        length: password.length >= 8,
 
-    if (/[a-z]/.test(password)) {
-        score++;
-    }
+        upper: patterns.passwordUpper.test(password),
 
-    if (/[A-Z]/.test(password)) {
-        score++;
-    }
+        lower: patterns.passwordLower.test(password),
 
-    if (/[0-9]/.test(password)) {
-        score++;
-    }
+        number: patterns.passwordNumber.test(password),
 
-    if (/[@$!%*?&]/.test(password)) {
-        score++;
-    }
+        special: patterns.passwordSpecial.test(password)
 
-    const percentage =
-        score * 20;
+    };
 
-    strengthFill.style.width =
-        percentage + "%";
+    document.getElementById("ruleLength")
+        .classList.toggle("valid", rules.length);
+
+    document.getElementById("ruleUpper")
+        .classList.toggle("valid", rules.upper);
+
+    document.getElementById("ruleLower")
+        .classList.toggle("valid", rules.lower);
+
+    document.getElementById("ruleNumber")
+        .classList.toggle("valid", rules.number);
+
+    document.getElementById("ruleSpecial")
+        .classList.toggle("valid", rules.special);
+
+
+    const score = Object.values(rules)
+        .filter(Boolean)
+        .length;
 
 
     if (password.length === 0) {
 
-        strengthText.textContent =
-            "Password strength";
+        strengthFill.style.width = "0%";
+        strengthText.textContent = "Password strength";
 
-    } else if (score <= 2) {
+        return 0;
+    }
 
-        strengthText.textContent =
-            "Weak";
+
+    if (score <= 2) {
+
+        strengthFill.style.width = "25%";
+        strengthText.textContent = "Weak";
 
     } else if (score === 3) {
 
-        strengthText.textContent =
-            "Medium";
+        strengthFill.style.width = "50%";
+        strengthText.textContent = "Fair";
 
     } else if (score === 4) {
 
-        strengthText.textContent =
-            "Strong";
+        strengthFill.style.width = "75%";
+        strengthText.textContent = "Strong";
 
     } else {
 
-        strengthText.textContent =
-            "Very Strong";
+        strengthFill.style.width = "100%";
+        strengthText.textContent = "Very Strong";
     }
+
+    return score;
 }
 
-
-/* =========================================
-   PASSWORD
-========================================= */
+/* ================= PASSWORD VALIDATION ================= */
 
 function validatePassword() {
 
-    const value =
-        passwordInput.value;
+    const password = passwordInput.value;
 
-    if (value === "") {
+    if (password === "") {
 
         showError(
             passwordInput,
@@ -401,34 +371,29 @@ function validatePassword() {
         return false;
     }
 
-    if (!passwordRegex.test(value)) {
+    const score = checkPasswordStrength();
+
+    if (score < 4) {
 
         showError(
             passwordInput,
             "passwordError",
-            "Password must contain 8+ characters, uppercase, lowercase, number and special character."
+            "Password must be at least 8 characters with uppercase, lowercase, number and special character."
         );
 
         return false;
     }
 
-    showSuccess(
-        passwordInput,
-        "passwordError"
-    );
+    showSuccess(passwordInput, "passwordError");
 
     return true;
 }
 
-
-/* =========================================
-   CONFIRM PASSWORD
-========================================= */
+/* ================= CONFIRM PASSWORD ================= */
 
 function validateConfirmPassword() {
 
-    const password =
-        passwordInput.value;
+    const password = passwordInput.value;
 
     const confirmPassword =
         confirmPasswordInput.value;
@@ -463,666 +428,400 @@ function validateConfirmPassword() {
     return true;
 }
 
+/* ================= CAPTCHA ================= */
 
-/* =========================================
-   TERMS
-========================================= */
+function generateCaptcha() {
+
+    const characters =
+        "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    captchaCode = "";
+
+    for (let i = 0; i < 6; i++) {
+
+        captchaCode +=
+            characters.charAt(
+                Math.floor(
+                    Math.random() * characters.length
+                )
+            );
+    }
+
+    drawCaptcha();
+}
+
+
+function drawCaptcha() {
+
+    const canvas =
+        document.getElementById("captchaCanvas");
+
+    const ctx = canvas.getContext("2d");
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    /* Background */
+
+    ctx.fillStyle = "#10121e";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    /* Noise Lines */
+
+    for (let i = 0; i < 7; i++) {
+
+        ctx.strokeStyle =
+            "rgba(124,92,255,0.35)";
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height
+        );
+
+        ctx.lineTo(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height
+        );
+
+        ctx.stroke();
+    }
+
+
+    /* CAPTCHA Text */
+
+    ctx.font = "bold 28px Arial";
+    ctx.textBaseline = "middle";
+
+    for (let i = 0; i < captchaCode.length; i++) {
+
+        ctx.save();
+
+        ctx.translate(
+            25 + i * 25,
+            28
+        );
+
+        ctx.rotate(
+            (Math.random() - 0.5) * 0.4
+        );
+
+        ctx.fillStyle =
+            i % 2 === 0
+                ? "#9c8cff"
+                : "#00d9ff";
+
+        ctx.fillText(
+            captchaCode[i],
+            0,
+            0
+        );
+
+        ctx.restore();
+    }
+}
+
+
+function validateCaptcha() {
+
+    const value =
+        captchaInput.value.trim().toUpperCase();
+
+    if (value === "") {
+
+        showError(
+            captchaInput,
+            "captchaError",
+            "Please enter the CAPTCHA."
+        );
+
+        return false;
+    }
+
+    if (value !== captchaCode) {
+
+        showError(
+            captchaInput,
+            "captchaError",
+            "Incorrect CAPTCHA. Please try again."
+        );
+
+        return false;
+    }
+
+    showSuccess(
+        captchaInput,
+        "captchaError"
+    );
+
+    return true;
+}
+
+/* ================= TERMS ================= */
 
 function validateTerms() {
 
-    const error =
-        document.getElementById(
-            "termsError"
-        );
+    const errorElement =
+        document.getElementById("termsError");
 
     if (!termsInput.checked) {
 
-        error.textContent =
+        errorElement.textContent =
             "You must accept the Terms & Conditions.";
 
         return false;
     }
 
-    error.textContent = "";
+    errorElement.textContent = "";
 
     return true;
 }
 
+/* ================= PASSWORD TOGGLE ================= */
 
-/* =========================================
-   PROGRESS BAR
-========================================= */
+document.querySelectorAll(".password-toggle")
+    .forEach(button => {
 
-function updateProgress() {
+        button.addEventListener("click", function () {
 
-    let completed = 0;
+            const targetId =
+                this.dataset.target;
 
-    const total = 9;
+            const input =
+                document.getElementById(targetId);
 
+            if (input.type === "password") {
 
-    if (nameInput.value.trim() !== "") {
-        completed++;
-    }
+                input.type = "text";
+                this.textContent = "Hide";
+                this.setAttribute(
+                    "aria-label",
+                    "Hide password"
+                );
 
-    if (emailRegex.test(
-        emailInput.value.trim()
-    )) {
-        completed++;
-    }
+            } else {
 
-    if (mobileRegex.test(
-        mobileInput.value.trim()
-    )) {
-        completed++;
-    }
+                input.type = "password";
+                this.textContent = "Show";
+                this.setAttribute(
+                    "aria-label",
+                    "Show password"
+                );
+            }
 
-    if (courseInput.value !== "") {
-        completed++;
-    }
+        });
 
-    if (yearInput.value !== "") {
-        completed++;
-    }
+    });
 
-    if (
-        document.querySelector(
-            'input[name="gender"]:checked'
-        )
-    ) {
-        completed++;
-    }
+/* ================= REAL-TIME VALIDATION ================= */
 
-    if (
-        passwordRegex.test(
-            passwordInput.value
-        )
-    ) {
-        completed++;
-    }
+nameInput.addEventListener("keyup", validateName);
 
-    if (
-        confirmPasswordInput.value !== "" &&
-        confirmPasswordInput.value ===
-        passwordInput.value
-    ) {
-        completed++;
-    }
+emailInput.addEventListener("keyup", validateEmail);
 
-    if (termsInput.checked) {
-        completed++;
-    }
+mobileInput.addEventListener("keyup", validateMobile);
 
+courseInput.addEventListener("change", validateCourse);
 
-    const percentage =
-        (completed / total) * 100;
+yearInput.addEventListener("change", validateYear);
 
-    progressBar.style.width =
-        percentage + "%";
-}
+passwordInput.addEventListener("keyup", function () {
 
+    checkPasswordStrength();
 
-/* =========================================
-   REAL-TIME VALIDATION
-========================================= */
-
-nameInput.addEventListener(
-    "input",
-    function () {
-
-        validateName();
-
-        updateProgress();
-    }
-);
-
-
-emailInput.addEventListener(
-    "input",
-    function () {
-
-        validateEmail();
-
-        updateProgress();
-    }
-);
-
-
-mobileInput.addEventListener(
-    "input",
-    function () {
-
-        mobileInput.value =
-            mobileInput.value.replace(
-                /\D/g,
-                ""
-            );
-
-        validateMobile();
-
-        updateProgress();
-    }
-);
-
-
-courseInput.addEventListener(
-    "change",
-    function () {
-
-        validateCourse();
-
-        updateProgress();
-    }
-);
-
-
-yearInput.addEventListener(
-    "change",
-    function () {
-
-        validateYear();
-
-        updateProgress();
-    }
-);
-
-
-passwordInput.addEventListener(
-    "input",
-    function () {
-
-        checkPasswordStrength();
-
+    if (passwordInput.value.length > 0) {
         validatePassword();
-
-        if (
-            confirmPasswordInput.value !== ""
-        ) {
-
-            validateConfirmPassword();
-        }
-
-        updateProgress();
     }
-);
 
+    if (confirmPasswordInput.value.length > 0) {
+        validateConfirmPassword();
+    }
+
+});
 
 confirmPasswordInput.addEventListener(
-    "input",
-    function () {
-
-        validateConfirmPassword();
-
-        updateProgress();
-    }
+    "keyup",
+    validateConfirmPassword
 );
 
-
-document.querySelectorAll(
-    'input[name="gender"]'
-).forEach(
-    function (radio) {
-
-        radio.addEventListener(
-            "change",
-            function () {
-
-                validateGender();
-
-                updateProgress();
-            }
-        );
-
-    }
+captchaInput.addEventListener(
+    "keyup",
+    validateCaptcha
 );
-
 
 termsInput.addEventListener(
     "change",
-    function () {
-
-        validateTerms();
-
-        updateProgress();
-    }
+    validateTerms
 );
 
+document
+    .querySelectorAll('input[name="gender"]')
+    .forEach(radio => {
 
-/* =========================================
-   SHOW / HIDE PASSWORD
-========================================= */
-
-function togglePassword(
-    input,
-    button
-) {
-
-    if (input.type === "password") {
-
-        input.type = "text";
-
-        button.textContent = "🙈";
-
-        button.setAttribute(
-            "aria-label",
-            "Hide password"
+        radio.addEventListener(
+            "change",
+            validateGender
         );
 
-    } else {
+    });
 
-        input.type = "password";
+/* ================= REFRESH CAPTCHA ================= */
 
-        button.textContent = "👁";
+document
+    .getElementById("refreshCaptcha")
+    .addEventListener("click", function () {
 
-        button.setAttribute(
-            "aria-label",
-            "Show password"
+        generateCaptcha();
+
+        captchaInput.value = "";
+
+        clearValidation(
+            captchaInput,
+            "captchaError"
         );
-    }
-}
+
+        captchaInput.focus();
+
+    });
+
+/* ================= FORM SUBMISSION ================= */
+
+form.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    successMessage.classList.remove("show");
 
 
-document.getElementById(
-    "passwordToggle"
-).addEventListener(
-    "click",
-    function () {
+    const isValid = [
 
-        togglePassword(
-            passwordInput,
-            this
-        );
-    }
-);
+        validateName(),
+        validateEmail(),
+        validateMobile(),
+        validateCourse(),
+        validateYear(),
+        validateGender(),
+        validatePassword(),
+        validateConfirmPassword(),
+        validateCaptcha(),
+        validateTerms()
 
-
-document.getElementById(
-    "confirmToggle"
-).addEventListener(
-    "click",
-    function () {
-
-        togglePassword(
-            confirmPasswordInput,
-            this
-        );
-    }
-);
+    ].every(Boolean);
 
 
-/* =========================================
-   FORM SUBMISSION
-========================================= */
+    if (!isValid) {
 
-form.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        const validName =
-            validateName();
-
-        const validEmail =
-            validateEmail();
-
-        const validMobile =
-            validateMobile();
-
-        const validCourse =
-            validateCourse();
-
-        const validYear =
-            validateYear();
-
-        const validGender =
-            validateGender();
-
-        const validPassword =
-            validatePassword();
-
-        const validConfirmPassword =
-            validateConfirmPassword();
-
-        const validTerms =
-            validateTerms();
-
-
-        updateProgress();
-
-
-        if (
-            validName &&
-            validEmail &&
-            validMobile &&
-            validCourse &&
-            validYear &&
-            validGender &&
-            validPassword &&
-            validConfirmPassword &&
-            validTerms
-        ) {
-
-            successMessage.classList.add(
-                "show"
+        const firstInvalid =
+            form.querySelector(
+                '[aria-invalid="true"]'
             );
 
-
-            successMessage.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-
-            setTimeout(
-                function () {
-
-                    form.reset();
-
-
-                    clearValidation(
-                        nameInput,
-                        "nameError"
-                    );
-
-                    clearValidation(
-                        emailInput,
-                        "emailError"
-                    );
-
-                    clearValidation(
-                        mobileInput,
-                        "mobileError"
-                    );
-
-                    clearValidation(
-                        courseInput,
-                        "courseError"
-                    );
-
-                    clearValidation(
-                        yearInput,
-                        "yearError"
-                    );
-
-                    clearValidation(
-                        passwordInput,
-                        "passwordError"
-                    );
-
-                    clearValidation(
-                        confirmPasswordInput,
-                        "confirmPasswordError"
-                    );
-
-
-                    document.getElementById(
-                        "genderError"
-                    ).textContent = "";
-
-
-                    document.getElementById(
-                        "termsError"
-                    ).textContent = "";
-
-
-                    strengthFill.style.width =
-                        "0%";
-
-
-                    strengthText.textContent =
-                        "Password strength";
-
-
-                    progressBar.style.width =
-                        "0%";
-
-
-                    successMessage.classList.remove(
-                        "show"
-                    );
-
-                },
-                4000
-            );
-
-        } else {
-
-            const firstError =
-                document.querySelector(
-                    ".input-wrapper.invalid input, .input-wrapper.invalid select"
-                );
-
-
-            if (firstError) {
-
-                firstError.focus();
-            }
+        if (firstInvalid) {
+            firstInvalid.focus();
         }
+
+        return;
     }
-);
 
 
-/* =========================================
-   PREMIUM CUSTOM CURSOR
-========================================= */
+    /* Successful Registration */
+
+    successMessage.classList.add("show");
+
+    form.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+});
+
+/* ================= CUSTOM CURSOR ================= */
 
 const cursorDot =
-    document.querySelector(
-        ".cursor-dot"
-    );
+    document.querySelector(".cursor-dot");
 
 const cursorRing =
-    document.querySelector(
-        ".cursor-ring"
-    );
+    document.querySelector(".cursor-ring");
+
+let mouseX = 0;
+let mouseY = 0;
+
+let ringX = 0;
+let ringY = 0;
 
 
-if (
-    cursorDot &&
-    cursorRing &&
-    window.matchMedia(
-        "(min-width: 769px)"
-    ).matches
-) {
+document.addEventListener("mousemove", function (event) {
 
-    let mouseX =
-        window.innerWidth / 2;
+    mouseX = event.clientX;
+    mouseY = event.clientY;
 
-    let mouseY =
-        window.innerHeight / 2;
+    cursorDot.style.left =
+        mouseX + "px";
 
-    let ringX = mouseX;
-    let ringY = mouseY;
+    cursorDot.style.top =
+        mouseY + "px";
+
+});
 
 
-    /* Mouse position */
+function animateCursor() {
 
-    document.addEventListener(
-        "mousemove",
-        function (event) {
+    ringX +=
+        (mouseX - ringX) * 0.12;
 
-            mouseX =
-                event.clientX;
+    ringY +=
+        (mouseY - ringY) * 0.12;
 
-            mouseY =
-                event.clientY;
+    cursorRing.style.left =
+        ringX + "px";
 
+    cursorRing.style.top =
+        ringY + "px";
 
-            cursorDot.style.transform =
-                `translate3d(
-                    ${mouseX}px,
-                    ${mouseY}px,
-                    0
-                ) translate(-50%, -50%)`;
-        }
-    );
-
-
-    /* Smooth ring movement */
-
-    function animateCursor() {
-
-        ringX +=
-            (mouseX - ringX) * 0.15;
-
-        ringY +=
-            (mouseY - ringY) * 0.15;
-
-
-        cursorRing.style.transform =
-            `translate3d(
-                ${ringX}px,
-                ${ringY}px,
-                0
-            ) translate(-50%, -50%)`;
-
-
-        requestAnimationFrame(
-            animateCursor
-        );
-    }
-
-
-    animateCursor();
-
-
-    /* =====================================
-       HOVER EFFECT
-    ===================================== */
-
-    const interactiveElements =
-        document.querySelectorAll(
-            "button, a, input, select, label, .gender-card"
-        );
-
-
-    interactiveElements.forEach(
-        function (element) {
-
-            element.addEventListener(
-                "mouseenter",
-                function () {
-
-                    cursorRing.classList.add(
-                        "hover"
-                    );
-
-                    cursorDot.classList.add(
-                        "hover"
-                    );
-                }
-            );
-
-
-            element.addEventListener(
-                "mouseleave",
-                function () {
-
-                    cursorRing.classList.remove(
-                        "hover"
-                    );
-
-                    cursorDot.classList.remove(
-                        "hover"
-                    );
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================
-       INPUT CURSOR EFFECT
-    ===================================== */
-
-    const textInputs =
-        document.querySelectorAll(
-            "input[type='text'], input[type='email'], input[type='tel'], input[type='password']"
-        );
-
-
-    textInputs.forEach(
-        function (input) {
-
-            input.addEventListener(
-                "mouseenter",
-                function () {
-
-                    cursorRing.classList.add(
-                        "text"
-                    );
-                }
-            );
-
-
-            input.addEventListener(
-                "mouseleave",
-                function () {
-
-                    cursorRing.classList.remove(
-                        "text"
-                    );
-                }
-            );
-
-        }
-    );
-
-
-    /* =====================================
-       CLICK EFFECT
-    ===================================== */
-
-    document.addEventListener(
-        "mousedown",
-        function () {
-
-            cursorRing.classList.add(
-                "click"
-            );
-        }
-    );
-
-
-    document.addEventListener(
-        "mouseup",
-        function () {
-
-            cursorRing.classList.remove(
-                "click"
-            );
-        }
-    );
-
-
-    /* =====================================
-       WINDOW EXIT
-    ===================================== */
-
-    document.addEventListener(
-        "mouseleave",
-        function () {
-
-            cursorDot.style.opacity =
-                "0";
-
-            cursorRing.style.opacity =
-                "0";
-        }
-    );
-
-
-    document.addEventListener(
-        "mouseenter",
-        function () {
-
-            cursorDot.style.opacity =
-                "1";
-
-            cursorRing.style.opacity =
-                "1";
-        }
+    requestAnimationFrame(
+        animateCursor
     );
 }
+
+animateCursor();
+
+
+/* Cursor Hover Effect */
+
+document
+    .querySelectorAll(
+        "button, input, select, label, a"
+    )
+    .forEach(element => {
+
+        element.addEventListener(
+            "mouseenter",
+            () => {
+                cursorRing.classList.add("hover");
+            }
+        );
+
+        element.addEventListener(
+            "mouseleave",
+            () => {
+                cursorRing.classList.remove("hover");
+            }
+        );
+
+    });
+
+/* ================= INITIALIZE ================= */
+
+generateCaptcha();

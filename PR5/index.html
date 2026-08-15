@@ -10,62 +10,100 @@
 
 <body>
 
+    <!-- Animated Background -->
+    <div class="background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
     <!-- Custom Cursor -->
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
-    <!-- Animated Background -->
-    <div class="background">
-        <div class="blob blob1"></div>
-        <div class="blob blob2"></div>
-        <div class="blob blob3"></div>
-    </div>
+    <main class="page-wrapper">
 
-    <main class="container">
+        <section class="registration-card">
 
-        <section class="form-card">
+            <!-- Left Information Panel -->
+            <aside class="info-panel">
 
-            <!-- Header -->
-            <header class="form-header">
-
-                <div class="logo">
-                    🎓
+                <div class="brand">
+                    <div class="brand-icon">✦</div>
+                    <span>StudentHub</span>
                 </div>
 
-                <div>
-                    <h1>Student Registration</h1>
-                    <p>Create your student account</p>
+                <div class="info-content">
+                    <span class="badge">PRACTICAL 05</span>
+
+                    <h1>
+                        Start Your
+                        <span>Journey.</span>
+                    </h1>
+
+                    <p>
+                        Create your student account and unlock
+                        a smarter learning experience.
+                    </p>
+
+                    <div class="feature-list">
+
+                        <div class="feature">
+                            <div class="feature-icon">✓</div>
+                            <div>
+                                <strong>Secure Registration</strong>
+                                <small>Validated & protected</small>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">⚡</div>
+                            <div>
+                                <strong>Instant Validation</strong>
+                                <small>Real-time error feedback</small>
+                            </div>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature-icon">♢</div>
+                            <div>
+                                <strong>Accessible Design</strong>
+                                <small>Keyboard friendly UI</small>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
-            </header>
-
-            <!-- Progress -->
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-
-            <form id="registrationForm" novalidate>
-
-                <!-- =====================================
-                     PERSONAL INFORMATION
-                ====================================== -->
-
-                <div class="section-title">
-                    <span>01</span>
-                    <h2>Personal Information</h2>
+                <div class="info-footer">
+                    <span>HTML5</span>
+                    <span>•</span>
+                    <span>JavaScript ES6</span>
+                    <span>•</span>
+                    <span>Regex</span>
                 </div>
 
-                <div class="form-grid">
+            </aside>
+
+            <!-- Form Panel -->
+            <section class="form-panel">
+
+                <div class="form-header">
+                    <span class="form-label">CREATE ACCOUNT</span>
+                    <h2>Student Registration</h2>
+                    <p>Fill in your details to register.</p>
+                </div>
+
+                <form id="registrationForm" novalidate>
 
                     <!-- Name -->
-                    <div class="input-group full">
-
+                    <div class="form-group">
                         <label for="name">
-                            Full Name <span>*</span>
+                            Full Name
+                            <span>*</span>
                         </label>
 
                         <div class="input-wrapper">
-
                             <span class="input-icon">👤</span>
 
                             <input
@@ -74,263 +112,162 @@
                                 name="name"
                                 placeholder="Enter your full name"
                                 autocomplete="name"
+                                maxlength="50"
+                                aria-describedby="nameError"
+                                required
                             >
-
                         </div>
 
-                        <small class="error" id="nameError"></small>
-
+                        <small class="error-message" id="nameError" aria-live="polite"></small>
                     </div>
 
-
                     <!-- Email -->
-                    <div class="input-group">
-
+                    <div class="form-group">
                         <label for="email">
-                            Email Address <span>*</span>
+                            Email Address
+                            <span>*</span>
                         </label>
 
                         <div class="input-wrapper">
-
-                            <span class="input-icon">✉️</span>
+                            <span class="input-icon">✉</span>
 
                             <input
                                 type="email"
                                 id="email"
                                 name="email"
-                                placeholder="example@email.com"
+                                placeholder="you@example.com"
                                 autocomplete="email"
+                                aria-describedby="emailError"
+                                required
                             >
-
                         </div>
 
-                        <small class="error" id="emailError"></small>
-
+                        <small class="error-message" id="emailError" aria-live="polite"></small>
                     </div>
 
-
                     <!-- Mobile -->
-                    <div class="input-group">
-
+                    <div class="form-group">
                         <label for="mobile">
-                            Mobile Number <span>*</span>
+                            Mobile Number
+                            <span>*</span>
                         </label>
 
                         <div class="input-wrapper">
-
-                            <span class="input-icon">📱</span>
+                            <span class="input-icon">☎</span>
 
                             <input
                                 type="tel"
                                 id="mobile"
                                 name="mobile"
-                                placeholder="10 digit mobile number"
+                                placeholder="10-digit mobile number"
+                                inputmode="numeric"
                                 maxlength="10"
                                 autocomplete="tel"
+                                aria-describedby="mobileError"
+                                required
                             >
+                        </div>
+
+                        <small class="error-message" id="mobileError" aria-live="polite"></small>
+                    </div>
+
+                    <!-- Course + Year -->
+                    <div class="two-column">
+
+                        <div class="form-group">
+                            <label for="course">
+                                Course
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper select-wrapper">
+                                <span class="input-icon">◆</span>
+
+                                <select
+                                    id="course"
+                                    name="course"
+                                    aria-describedby="courseError"
+                                    required
+                                >
+                                    <option value="">Select Course</option>
+                                    <option value="aiml">AI & ML Engineering</option>
+                                    <option value="cse">Computer Engineering</option>
+                                    <option value="it">Information Technology</option>
+                                    <option value="ce">Computer Science</option>
+                                    <option value="ds">Data Science</option>
+                                </select>
+                            </div>
+
+                            <small class="error-message" id="courseError" aria-live="polite"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">
+                                Year
+                                <span>*</span>
+                            </label>
+
+                            <div class="input-wrapper select-wrapper">
+                                <span class="input-icon">▣</span>
+
+                                <select
+                                    id="year"
+                                    name="year"
+                                    aria-describedby="yearError"
+                                    required
+                                >
+                                    <option value="">Select Year</option>
+                                    <option value="1">1st Year</option>
+                                    <option value="2">2nd Year</option>
+                                    <option value="3">3rd Year</option>
+                                    <option value="4">4th Year</option>
+                                </select>
+                            </div>
+
+                            <small class="error-message" id="yearError" aria-live="polite"></small>
+                        </div>
+
+                    </div>
+
+                    <!-- Gender -->
+                    <fieldset class="gender-field">
+                        <legend>
+                            Gender <span>*</span>
+                        </legend>
+
+                        <div class="gender-options">
+
+                            <label class="radio-card">
+                                <input type="radio" name="gender" value="male">
+                                <span>Male</span>
+                            </label>
+
+                            <label class="radio-card">
+                                <input type="radio" name="gender" value="female">
+                                <span>Female</span>
+                            </label>
+
+                            <label class="radio-card">
+                                <input type="radio" name="gender" value="other">
+                                <span>Other</span>
+                            </label>
 
                         </div>
 
-                        <small class="error" id="mobileError"></small>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =====================================
-                     ACADEMIC INFORMATION
-                ====================================== -->
-
-                <div class="section-title">
-                    <span>02</span>
-                    <h2>Academic Information</h2>
-                </div>
-
-                <div class="form-grid">
-
-                    <!-- Course -->
-                    <div class="input-group">
-
-                        <label for="course">
-                            Course <span>*</span>
-                        </label>
-
-                        <div class="input-wrapper select-wrapper">
-
-                            <span class="input-icon">🎓</span>
-
-                            <select id="course" name="course">
-
-                                <option value="">
-                                    Select your course
-                                </option>
-
-                                <option value="B.Tech AI & ML">
-                                    B.Tech AI & ML
-                                </option>
-
-                                <option value="B.Tech Computer Engineering">
-                                    B.Tech Computer Engineering
-                                </option>
-
-                                <option value="B.Tech IT">
-                                    B.Tech IT
-                                </option>
-
-                                <option value="BCA">
-                                    BCA
-                                </option>
-
-                                <option value="MCA">
-                                    MCA
-                                </option>
-
-                                <option value="B.Sc">
-                                    B.Sc
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                        <small class="error" id="courseError"></small>
-
-                    </div>
-
-
-                    <!-- Year -->
-                    <div class="input-group">
-
-                        <label for="year">
-                            Academic Year <span>*</span>
-                        </label>
-
-                        <div class="input-wrapper select-wrapper">
-
-                            <span class="input-icon">📚</span>
-
-                            <select id="year" name="year">
-
-                                <option value="">
-                                    Select year
-                                </option>
-
-                                <option value="1st Year">
-                                    1st Year
-                                </option>
-
-                                <option value="2nd Year">
-                                    2nd Year
-                                </option>
-
-                                <option value="3rd Year">
-                                    3rd Year
-                                </option>
-
-                                <option value="4th Year">
-                                    4th Year
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                        <small class="error" id="yearError"></small>
-
-                    </div>
-
-                </div>
-
-
-                <!-- Gender -->
-
-                <div class="input-group gender-group">
-
-                    <label>
-                        Gender <span>*</span>
-                    </label>
-
-                    <div class="gender-options">
-
-                        <label class="gender-card">
-
-                            <input
-                                type="radio"
-                                name="gender"
-                                value="Male"
-                            >
-
-                            <span class="gender-content">
-                                <span>👨</span>
-                                Male
-                            </span>
-
-                        </label>
-
-
-                        <label class="gender-card">
-
-                            <input
-                                type="radio"
-                                name="gender"
-                                value="Female"
-                            >
-
-                            <span class="gender-content">
-                                <span>👩</span>
-                                Female
-                            </span>
-
-                        </label>
-
-
-                        <label class="gender-card">
-
-                            <input
-                                type="radio"
-                                name="gender"
-                                value="Other"
-                            >
-
-                            <span class="gender-content">
-                                <span>🧑</span>
-                                Other
-                            </span>
-
-                        </label>
-
-                    </div>
-
-                    <small
-                        class="error"
-                        id="genderError"
-                    ></small>
-
-                </div>
-
-
-                <!-- =====================================
-                     ACCOUNT SECURITY
-                ====================================== -->
-
-                <div class="section-title">
-                    <span>03</span>
-                    <h2>Account Security</h2>
-                </div>
-
-                <div class="form-grid">
+                        <small class="error-message" id="genderError" aria-live="polite"></small>
+                    </fieldset>
 
                     <!-- Password -->
-                    <div class="input-group">
+                    <div class="form-group">
 
                         <label for="password">
-                            Password <span>*</span>
+                            Password
+                            <span>*</span>
                         </label>
 
                         <div class="input-wrapper">
 
-                            <span class="input-icon">🔒</span>
+                            <span class="input-icon">●</span>
 
                             <input
                                 type="password"
@@ -338,21 +275,22 @@
                                 name="password"
                                 placeholder="Create a strong password"
                                 autocomplete="new-password"
+                                aria-describedby="passwordError passwordStrength"
+                                required
                             >
 
                             <button
                                 type="button"
                                 class="password-toggle"
-                                id="passwordToggle"
+                                data-target="password"
                                 aria-label="Show password"
                             >
-                                👁
+                                Show
                             </button>
 
                         </div>
 
-
-                        <!-- Strength -->
+                        <!-- Strength Meter -->
                         <div class="strength-container">
 
                             <div class="strength-bar">
@@ -365,30 +303,31 @@
 
                         </div>
 
+                        <div class="password-rules" id="passwordStrength">
 
-                        <small class="password-hint">
-                            Use 8+ characters with uppercase,
-                            lowercase, number and special character.
-                        </small>
+                            <span id="ruleLength">○ 8+ characters</span>
+                            <span id="ruleUpper">○ Uppercase</span>
+                            <span id="ruleLower">○ Lowercase</span>
+                            <span id="ruleNumber">○ Number</span>
+                            <span id="ruleSpecial">○ Special character</span>
 
-                        <small
-                            class="error"
-                            id="passwordError"
-                        ></small>
+                        </div>
+
+                        <small class="error-message" id="passwordError" aria-live="polite"></small>
 
                     </div>
 
-
                     <!-- Confirm Password -->
-                    <div class="input-group">
+                    <div class="form-group">
 
                         <label for="confirmPassword">
-                            Confirm Password <span>*</span>
+                            Confirm Password
+                            <span>*</span>
                         </label>
 
                         <div class="input-wrapper">
 
-                            <span class="input-icon">🔐</span>
+                            <span class="input-icon">●</span>
 
                             <input
                                 type="password"
@@ -396,125 +335,126 @@
                                 name="confirmPassword"
                                 placeholder="Re-enter your password"
                                 autocomplete="new-password"
+                                aria-describedby="confirmPasswordError"
+                                required
                             >
 
                             <button
                                 type="button"
                                 class="password-toggle"
-                                id="confirmToggle"
+                                data-target="confirmPassword"
                                 aria-label="Show password"
                             >
-                                👁
+                                Show
                             </button>
 
                         </div>
 
-                        <small
-                            class="error"
-                            id="confirmPasswordError"
-                        ></small>
+                        <small class="error-message" id="confirmPasswordError" aria-live="polite"></small>
 
                     </div>
 
-                </div>
+                    <!-- CAPTCHA -->
+                    <div class="captcha-section">
 
+                        <label for="captchaInput">
+                            Security Verification
+                            <span>*</span>
+                        </label>
 
-                <!-- =====================================
-                     TERMS
-                ====================================== -->
+                        <div class="captcha-row">
 
-                <div class="terms-container">
+                            <canvas
+                                id="captchaCanvas"
+                                width="180"
+                                height="55"
+                                aria-label="CAPTCHA image"
+                            ></canvas>
 
-                    <label class="checkbox-label">
+                            <button
+                                type="button"
+                                id="refreshCaptcha"
+                                class="refresh-btn"
+                                aria-label="Generate new CAPTCHA"
+                                title="Refresh CAPTCHA"
+                            >
+                                ↻
+                            </button>
 
-                        <input
-                            type="checkbox"
-                            id="terms"
-                        >
+                            <input
+                                type="text"
+                                id="captchaInput"
+                                placeholder="Enter CAPTCHA"
+                                maxlength="6"
+                                autocomplete="off"
+                                aria-describedby="captchaError"
+                                required
+                            >
 
-                        <span class="custom-checkbox"></span>
+                        </div>
 
-                        <span>
-                            I agree to the
-                            <a href="#" onclick="return false;">
-                                Terms & Conditions
-                            </a>
-                            and
-                            <a href="#" onclick="return false;">
-                                Privacy Policy
-                            </a>.
-                        </span>
-
-                    </label>
-
-                    <small
-                        class="error"
-                        id="termsError"
-                    ></small>
-
-                </div>
-
-
-                <!-- Submit -->
-                <button
-                    type="submit"
-                    class="submit-btn"
-                >
-
-                    <span>
-                        Complete Registration
-                    </span>
-
-                    <span class="arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <!-- Success -->
-                <div
-                    id="successMessage"
-                    class="success-message"
-                    role="alert"
-                >
-
-                    <span class="success-icon">
-                        ✓
-                    </span>
-
-                    <div>
-
-                        <strong>
-                            Registration Successful!
-                        </strong>
-
-                        <p>
-                            Your student account has been
-                            created successfully.
-                        </p>
+                        <small class="error-message" id="captchaError" aria-live="polite"></small>
 
                     </div>
 
-                </div>
+                    <!-- Terms -->
+                    <div class="terms-group">
 
-            </form>
+                        <label class="checkbox-label">
 
+                            <input
+                                type="checkbox"
+                                id="terms"
+                                name="terms"
+                                required
+                            >
 
-            <!-- Footer -->
-            <footer>
+                            <span class="custom-checkbox"></span>
 
-                <p>
-                    Practical 5 • Frontend Validation
-                </p>
+                            <span>
+                                I agree to the
+                                <a href="#" onclick="return false;">Terms & Conditions</a>
+                                and Privacy Policy.
+                            </span>
 
-                <span>
-                    HTML5 • CSS3 • JavaScript
-                </span>
+                        </label>
 
-            </footer>
+                        <small class="error-message" id="termsError" aria-live="polite"></small>
+
+                    </div>
+
+                    <!-- Submit -->
+                    <button
+                        type="submit"
+                        class="submit-btn"
+                        id="submitBtn"
+                    >
+                        <span>CREATE ACCOUNT</span>
+                        <span class="arrow">→</span>
+                    </button>
+
+                    <div
+                        class="success-message"
+                        id="successMessage"
+                        role="alert"
+                        aria-live="assertive"
+                    >
+                        <div class="success-icon">✓</div>
+                        <div>
+                            <strong>Registration Successful!</strong>
+                            <span>Your account has been created successfully.</span>
+                        </div>
+                    </div>
+
+                </form>
+
+            </section>
 
         </section>
+
+        <footer>
+            Practical 5 • Frontend Validation & User-Friendly Error Handling
+        </footer>
 
     </main>
 
