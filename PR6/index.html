@@ -1,44 +1,130 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Practical 6 - Events</title>
+
+    <title>EventSphere | College Events</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <div class="container">
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
 
-        <h1>College Events</h1>
-
-        <div class="controls">
-            <input type="text" id="searchInput" placeholder="Search events...">
-
-            <select id="categoryFilter">
-                <option value="all">All Categories</option>
-            </select>
-
-            <select id="sortSelect">
-                <option value="default">Sort By</option>
-                <option value="titleAsc">Title A-Z</option>
-                <option value="titleDesc">Title Z-A</option>
-                <option value="dateAsc">Date Oldest</option>
-                <option value="dateDesc">Date Newest</option>
-            </select>
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            EventSphere
         </div>
 
-        <div id="loading">Loading events...</div>
+        <div class="nav-badge">
+            <span></span>
+            Live Events
+        </div>
+    </header>
 
-        <div id="error"></div>
+    <main>
 
-        <div id="eventContainer"></div>
+        <section class="hero">
 
-        <div id="pagination"></div>
+            <div class="hero-content">
 
-    </div>
+                <div class="eyebrow">
+                    ✨ CAMPUS EVENT DISCOVERY
+                </div>
+
+                <h1>
+                    Discover What's
+                    <span>Happening.</span>
+                </h1>
+
+                <p>
+                    Explore workshops, competitions, seminars and
+                    unforgettable experiences happening around your campus.
+                </p>
+
+            </div>
+
+            <div class="hero-stat">
+                <strong id="totalEvents">15+</strong>
+                <span>Events Available</span>
+            </div>
+
+        </section>
+
+        <section class="dashboard">
+
+            <div class="toolbar">
+
+                <div class="search-box">
+                    <span>⌕</span>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search events..."
+                    >
+                </div>
+
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                </select>
+
+                <select id="sortSelect">
+                    <option value="default">Sort Events</option>
+                    <option value="titleAsc">Title A → Z</option>
+                    <option value="titleDesc">Title Z → A</option>
+                    <option value="dateAsc">Date: Oldest</option>
+                    <option value="dateDesc">Date: Newest</option>
+                </select>
+
+            </div>
+
+            <div class="results-bar">
+                <div>
+                    <span class="results-dot"></span>
+                    <span id="resultCount">Loading events...</span>
+                </div>
+
+                <span class="powered">
+                    Powered by Fetch API
+                </span>
+            </div>
+
+            <div id="loading">
+
+                <div class="loader"></div>
+
+                <h3>Loading events</h3>
+
+                <p>Fetching the latest campus events...</p>
+
+            </div>
+
+            <div id="error"></div>
+
+            <div id="eventContainer"></div>
+
+            <div id="pagination"></div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Practical 6 - Dynamic JSON Data Rendering</p>
+        <p>HTML5 - CSS3 - JavaScript ES6+</p>
+    </footer>
 
     <script type="module" src="js/app.js"></script>
 
 </body>
 </html>
+```
