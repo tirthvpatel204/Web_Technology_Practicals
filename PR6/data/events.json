@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "AI & Machine Learning Workshop",
+    "category": "Technology",
+    "date": "2026-09-20",
+    "location": "Ahmedabad",
+    "organizer": "Tech Club"
+  },
+  {
+    "id": 2,
+    "title": "Web Development Bootcamp",
+    "category": "Technology",
+    "date": "2026-09-22",
+    "location": "Anand",
+    "organizer": "Coding Club"
+  },
+  {
+    "id": 3,
+    "title": "Cultural Fest",
+    "category": "Cultural",
+    "date": "2026-09-25",
+    "location": "Nadiad",
+    "organizer": "Cultural Committee"
+  },
+  {
+    "id": 4,
+    "title": "Hackathon 2026",
+    "category": "Technology",
+    "date": "2026-09-28",
+    "location": "Vadodara",
+    "organizer": "Innovation Cell"
+  },
+  {
+    "id": 5,
+    "title": "Sports Day",
+    "category": "Sports",
+    "date": "2026-10-01",
+    "location": "Anand",
+    "organizer": "Sports Club"
+  },
+  {
+    "id": 6,
+    "title": "Photography Competition",
+    "category": "Competition",
+    "date": "2026-10-03",
+    "location": "Ahmedabad",
+    "organizer": "Media Club"
+  },
+  {
+    "id": 7,
+    "title": "Entrepreneurship Seminar",
+    "category": "Business",
+    "date": "2026-10-05",
+    "location": "Vadodara",
+    "organizer": "E-Cell"
+  },
+  {
+    "id": 8,
+    "title": "Cyber Security Awareness",
+    "category": "Technology",
+    "date": "2026-10-07",
+    "location": "Nadiad",
+    "organizer": "Cyber Club"
+  },
+  {
+    "id": 9,
+    "title": "Quiz Competition",
+    "category": "Competition",
+    "date": "2026-10-10",
+    "location": "Anand",
+    "organizer": "Academic Club"
+  },
+  {
+    "id": 10,
+    "title": "Robotics Exhibition",
+    "category": "Technology",
+    "date": "2026-10-12",
+    "location": "Ahmedabad",
+    "organizer": "Robotics Club"
+  },
+  {
+    "id": 11,
+    "title": "Music Night",
+    "category": "Cultural",
+    "date": "2026-10-15",
+    "location": "Vadodara",
+    "organizer": "Music Club"
+  },
+  {
+    "id": 12,
+    "title": "Career Guidance Seminar",
+    "category": "Career",
+    "date": "2026-10-18",
+    "location": "Anand",
+    "organizer": "Placement Cell"
+  },
+  {
+    "id": 13,
+    "title": "Startup Pitch Competition",
+    "category": "Business",
+    "date": "2026-10-20",
+    "location": "Ahmedabad",
+    "organizer": "E-Cell"
+  },
+  {
+    "id": 14,
+    "title": "Coding Competition",
+    "category": "Competition",
+    "date": "2026-10-23",
+    "location": "Nadiad",
+    "organizer": "Coding Club"
+  },
+  {
+    "id": 15,
+    "title": "Environmental Awareness Drive",
+    "category": "Social",
+    "date": "2026-10-25",
+    "location": "Vadodara",
+    "organizer": "NSS Club"
+  }
+]
