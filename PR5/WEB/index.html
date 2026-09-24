@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form">
+    <h2>Student Registration</h2>
+
+    <form id="form">
+
+        <label>Name</label>
+        <input type="text" id="name">
+        <span id="nameErr"></span>
+
+        <label>Email</label>
+        <input type="email" id="email">
+        <span id="emailErr"></span>
+
+        <label>Mobile</label>
+        <input type="tel" id="mobile">
+        <span id="mobileErr"></span>
+
+        <label>Password</label>
+        <input type="password" id="pass">
+        <span id="passErr"></span>
+        <small id="strength"></small>
+
+        <label>Confirm Password</label>
+        <input type="password" id="cpass">
+        <span id="cpassErr"></span>
+
+        <label>Course</label>
+        <select id="course">
+            <option value="">Select Course</option>
+            <option>BCA</option>
+            <option>B.Tech</option>
+            <option>MCA</option>
+        </select>
+        <span id="courseErr"></span>
+
+        <label>Year</label>
+        <select id="year">
+            <option value="">Select Year</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+        </select>
+        <span id="yearErr"></span>
+
+        <label>Gender</label>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female
+        <span id="genderErr"></span>
+
+        <label>
+            <input type="checkbox" id="terms">
+            I accept Terms & Conditions
+        </label>
+        <span id="termsErr"></span>
+
+        <button type="submit">Register</button>
+
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

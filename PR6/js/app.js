@@ -1,96 +1,147 @@
-import { fetchEvents } from "./api.js";
+import { fetchJSON } from "./fetchData.js";
+import { renderCards } from "./render.js";
+import { renderPagination } from "./pagination.js";
 
-import {
-    searchEvents,
-    filterEvents,
-    sortEvents,
-    paginate
-} from "./utils.js";
+const paths = {
+  events: "../data/events.json",
+  students: "../data/students.json",
+  faqs: "../data/faqs.json"
+};
 
-import {
-    renderEvents,
-    renderCategories,
-    renderPagination
-} from "./render.js";
+const state = {
+  type: "events",
+  data: [],
+  filtered: [],
+  page: 1,
+  pageSize: 6,
+  search: "",
+  filter: "all",
+  sort: "default"
+};
 
-let allEvents = [];
-let currentPage = 1;
-
-const itemsPerPage = 6;
-
+const container = document.getElementById("dataContainer");
+const status = document.getElementById("status");
+const pagination = document.getElementById("pagination");
 const searchInput = document.getElementById("searchInput");
-const categoryFilter = document.getElementById("categoryFilter");
+const filterSelect = document.getElementById("filterSelect");
 const sortSelect = document.getElementById("sortSelect");
+const pageSize = document.getElementById("pageSize");
+const recordCount = document.getElementById("recordCount");
 
-async function loadEvents() {
+async function loadData(type) {
+  status.className = "status";
+  status.textContent = "Loading JSON data...";
+  container.innerHTML = "";
+  pagination.innerHTML = "";
+
+  try {
+    const cacheKey = `practical6_${type}`;
+    let data;
+
     try {
-        const events = await fetchEvents();
-
-        allEvents = events;
-
-        renderCategories(allEvents);
-
-        updateUI();
-
-        document.getElementById("loading").style.display = "none";
-
-    } catch (error) {
-
-        document.getElementById("loading").style.display = "none";
-
-        document.getElementById("error").textContent =
-            "Error loading events: " + error.message;
+      const response = await fetch(paths[type]);
+      if (!response.ok) throw new Error("Fetch failed");
+      data = await response.json();
+      localStorage.setItem(cacheKey, JSON.stringify(data));
+    } catch (networkError) {
+      const cached = localStorage.getItem(cacheKey);
+      if (!cached) throw networkError;
+      data = JSON.parse(cached);
+      status.textContent = "Offline mode: showing cached data.";
     }
+
+    state.data = data;
+    state.page = 1;
+    buildFilter();
+    applyFilters();
+  } catch (error) {
+    status.className = "status error";
+    status.textContent = "Error: Could not load JSON data.";
+    container.innerHTML = `<div class="card"><h3>Data unavailable</h3><p>Run this project through a local server such as VS Code Live Server.</p></div>`;
+  }
 }
 
-function updateUI() {
-
-    let result = [...allEvents];
-
-    const keyword = searchInput.value;
-
-    const category = categoryFilter.value;
-
-    const sortType = sortSelect.value;
-
-    result = searchEvents(result, keyword);
-
-    result = filterEvents(result, category);
-
-    result = sortEvents(result, sortType);
-
-    const paginatedEvents = paginate(
-        result,
-        currentPage,
-        itemsPerPage
-    );
-
-    renderEvents(paginatedEvents);
-
-    renderPagination(
-        result.length,
-        currentPage,
-        itemsPerPage,
-        page => {
-            currentPage = page;
-            updateUI();
-        }
-    );
+function buildFilter() {
+  const key = state.type === "students" ? "course" : "category";
+  const values = [...new Set(state.data.map(item => item[key]))].sort();
+  filterSelect.innerHTML = `<option value="all">All ${state.type === "students" ? "Courses" : "Categories"}</option>`;
+  values.forEach(value => {
+    filterSelect.innerHTML += `<option value="${value}">${value}</option>`;
+  });
+  state.filter = "all";
 }
 
-searchInput.addEventListener("input", () => {
-    currentPage = 1;
-    updateUI();
+function applyFilters() {
+  const query = state.search.toLowerCase();
+  const key = state.type === "students" ? "course" : "category";
+
+  state.filtered = state.data.filter(item => {
+    const searchable = Object.values(item).join(" ").toLowerCase();
+    const matchesSearch = searchable.includes(query);
+    const matchesFilter = state.filter === "all" || item[key] === state.filter;
+    return matchesSearch && matchesFilter;
+  });
+
+  const titleKey = state.type === "events" ? "title" :
+                   state.type === "students" ? "name" : "question";
+
+  if (state.sort === "az") {
+    state.filtered.sort((a,b) => a[titleKey].localeCompare(b[titleKey]));
+  } else if (state.sort === "za") {
+    state.filtered.sort((a,b) => b[titleKey].localeCompare(a[titleKey]));
+  }
+
+  const start = (state.page - 1) * state.pageSize;
+  const pageData = state.filtered.slice(start, start + state.pageSize);
+
+  renderCards(pageData, state.type, container);
+  renderPagination(state.filtered.length, state.page, state.pageSize, pagination, page => {
+    state.page = page;
+    applyFilters();
+    window.scrollTo({top: 280, behavior: "smooth"});
+  });
+
+  recordCount.textContent = state.filtered.length;
+  if (!status.textContent.startsWith("Offline")) {
+    status.textContent = `${state.filtered.length} matching record(s)`;
+  }
+}
+
+document.querySelectorAll(".tab").forEach(tab => {
+  tab.addEventListener("click", () => {
+    document.querySelector(".tab.active").classList.remove("active");
+    tab.classList.add("active");
+    state.type = tab.dataset.type;
+    state.search = "";
+    state.sort = "default";
+    searchInput.value = "";
+    sortSelect.value = "default";
+    loadData(state.type);
+  });
 });
 
-categoryFilter.addEventListener("change", () => {
-    currentPage = 1;
-    updateUI();
+searchInput.addEventListener("input", e => {
+  state.search = e.target.value;
+  state.page = 1;
+  applyFilters();
 });
 
-sortSelect.addEventListener("change", () => {
-    currentPage = 1;
-    updateUI();
+filterSelect.addEventListener("change", e => {
+  state.filter = e.target.value;
+  state.page = 1;
+  applyFilters();
 });
 
-loadEvents();
+sortSelect.addEventListener("change", e => {
+  state.sort = e.target.value;
+  state.page = 1;
+  applyFilters();
+});
+
+pageSize.addEventListener("change", e => {
+  state.pageSize = Number(e.target.value);
+  state.page = 1;
+  applyFilters();
+});
+
+loadData("events");

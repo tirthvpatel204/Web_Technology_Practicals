@@ -1,0 +1,47 @@
+body {
+    font-family: Arial;
+    background: #eee;
+}
+
+.form {
+    width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 12px;
+}
+
+input, select {
+    width: 100%;
+    padding: 9px;
+    margin-top: 5px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    width: auto;
+}
+
+span {
+    display: block;
+    color: red;
+    font-size: 13px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background: blue;
+    color: white;
+    border: 0;
+}

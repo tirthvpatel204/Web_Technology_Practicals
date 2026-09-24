@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "question": "What is Fetch API?",
+    "category": "JavaScript",
+    "answer": "Fetch API is used to request resources such as JSON data from a server."
+  },
+  {
+    "id": 2,
+    "question": "What is JSON?",
+    "category": "General",
+    "answer": "JSON is a lightweight format used to store and exchange structured data."
+  },
+  {
+    "id": 3,
+    "question": "What does map() do?",
+    "category": "JavaScript",
+    "answer": "map() creates a new array by transforming every element."
+  },
+  {
+    "id": 4,
+    "question": "What does filter() do?",
+    "category": "JavaScript",
+    "answer": "filter() creates a new array containing elements that satisfy a condition."
+  },
+  {
+    "id": 5,
+    "question": "What does sort() do?",
+    "category": "JavaScript",
+    "answer": "sort() arranges array elements according to a comparison function."
+  },
+  {
+    "id": 6,
+    "question": "What is pagination?",
+    "category": "Web",
+    "answer": "Pagination divides a large dataset into smaller pages."
+  },
+  {
+    "id": 7,
+    "question": "What is localStorage?",
+    "category": "Web",
+    "answer": "localStorage stores key-value data in the browser."
+  },
+  {
+    "id": 8,
+    "question": "What is async/await?",
+    "category": "JavaScript",
+    "answer": "async/await provides a cleaner way to work with promises."
+  },
+  {
+    "id": 9,
+    "question": "Why use try/catch?",
+    "category": "JavaScript",
+    "answer": "try/catch handles runtime errors and failed asynchronous operations."
+  },
+  {
+    "id": 10,
+    "question": "What is DOM?",
+    "category": "Web",
+    "answer": "DOM represents an HTML document as objects that JavaScript can manipulate."
+  },
+  {
+    "id": 11,
+    "question": "What is an API?",
+    "category": "General",
+    "answer": "An API is an interface that allows software components to communicate."
+  },
+  {
+    "id": 12,
+    "question": "What is an external JSON file?",
+    "category": "General",
+    "answer": "It is a JSON resource stored separately from the HTML and JavaScript files."
+  },
+  {
+    "id": 13,
+    "question": "How is JSON parsed?",
+    "category": "JavaScript",
+    "answer": "Fetch responses can be converted into JavaScript objects using response.json()."
+  },
+  {
+    "id": 14,
+    "question": "Why use modules?",
+    "category": "JavaScript",
+    "answer": "Modules separate responsibilities and make JavaScript easier to maintain."
+  },
+  {
+    "id": 15,
+    "question": "What is dynamic rendering?",
+    "category": "Web",
+    "answer": "Dynamic rendering creates or updates webpage content using data and JavaScript."
+  }
+]

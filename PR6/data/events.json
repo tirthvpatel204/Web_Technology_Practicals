@@ -3,120 +3,105 @@
     "id": 1,
     "title": "AI & Machine Learning Workshop",
     "category": "Technology",
-    "date": "2026-09-20",
-    "location": "Ahmedabad",
-    "organizer": "Tech Club"
+    "date": "2026-10-05",
+    "venue": "CHARUSAT University"
   },
   {
     "id": 2,
-    "title": "Web Development Bootcamp",
-    "category": "Technology",
-    "date": "2026-09-22",
-    "location": "Anand",
-    "organizer": "Coding Club"
+    "title": "Annual Hackathon 2026",
+    "category": "Competition",
+    "date": "2026-10-10",
+    "venue": "Ahmedabad"
   },
   {
     "id": 3,
-    "title": "Cultural Fest",
-    "category": "Cultural",
-    "date": "2026-09-25",
-    "location": "Nadiad",
-    "organizer": "Cultural Committee"
+    "title": "Web Development Bootcamp",
+    "category": "Technology",
+    "date": "2026-10-15",
+    "venue": "Computer Lab A"
   },
   {
     "id": 4,
-    "title": "Hackathon 2026",
-    "category": "Technology",
-    "date": "2026-09-28",
-    "location": "Vadodara",
-    "organizer": "Innovation Cell"
+    "title": "Cultural Fest",
+    "category": "Cultural",
+    "date": "2026-10-20",
+    "venue": "University Ground"
   },
   {
     "id": 5,
-    "title": "Sports Day",
-    "category": "Sports",
-    "date": "2026-10-01",
-    "location": "Anand",
-    "organizer": "Sports Club"
+    "title": "Coding Contest",
+    "category": "Competition",
+    "date": "2026-10-24",
+    "venue": "Lab 3"
   },
   {
     "id": 6,
-    "title": "Photography Competition",
-    "category": "Competition",
-    "date": "2026-10-03",
-    "location": "Ahmedabad",
-    "organizer": "Media Club"
+    "title": "Entrepreneurship Seminar",
+    "category": "Seminar",
+    "date": "2026-11-02",
+    "venue": "Seminar Hall"
   },
   {
     "id": 7,
-    "title": "Entrepreneurship Seminar",
-    "category": "Business",
-    "date": "2026-10-05",
-    "location": "Vadodara",
-    "organizer": "E-Cell"
+    "title": "Cyber Security Awareness",
+    "category": "Technology",
+    "date": "2026-11-08",
+    "venue": "Auditorium"
   },
   {
     "id": 8,
-    "title": "Cyber Security Awareness",
-    "category": "Technology",
-    "date": "2026-10-07",
-    "location": "Nadiad",
-    "organizer": "Cyber Club"
+    "title": "Sports Meet",
+    "category": "Sports",
+    "date": "2026-11-12",
+    "venue": "Sports Complex"
   },
   {
     "id": 9,
-    "title": "Quiz Competition",
-    "category": "Competition",
-    "date": "2026-10-10",
-    "location": "Anand",
-    "organizer": "Academic Club"
+    "title": "Data Science Workshop",
+    "category": "Technology",
+    "date": "2026-11-18",
+    "venue": "AI Lab"
   },
   {
     "id": 10,
-    "title": "Robotics Exhibition",
-    "category": "Technology",
-    "date": "2026-10-12",
-    "location": "Ahmedabad",
-    "organizer": "Robotics Club"
+    "title": "Photography Competition",
+    "category": "Competition",
+    "date": "2026-11-22",
+    "venue": "Media Center"
   },
   {
     "id": 11,
-    "title": "Music Night",
-    "category": "Cultural",
-    "date": "2026-10-15",
-    "location": "Vadodara",
-    "organizer": "Music Club"
+    "title": "Research Paper Presentation",
+    "category": "Academic",
+    "date": "2026-11-28",
+    "venue": "Block B"
   },
   {
     "id": 12,
-    "title": "Career Guidance Seminar",
-    "category": "Career",
-    "date": "2026-10-18",
-    "location": "Anand",
-    "organizer": "Placement Cell"
+    "title": "Career Guidance Session",
+    "category": "Seminar",
+    "date": "2026-12-03",
+    "venue": "Auditorium"
   },
   {
     "id": 13,
-    "title": "Startup Pitch Competition",
-    "category": "Business",
-    "date": "2026-10-20",
-    "location": "Ahmedabad",
-    "organizer": "E-Cell"
+    "title": "Robotics Exhibition",
+    "category": "Technology",
+    "date": "2026-12-10",
+    "venue": "Innovation Hub"
   },
   {
     "id": 14,
-    "title": "Coding Competition",
-    "category": "Competition",
-    "date": "2026-10-23",
-    "location": "Nadiad",
-    "organizer": "Coding Club"
+    "title": "Music Night",
+    "category": "Cultural",
+    "date": "2026-12-15",
+    "venue": "Open Air Theatre"
   },
   {
     "id": 15,
-    "title": "Environmental Awareness Drive",
-    "category": "Social",
-    "date": "2026-10-25",
-    "location": "Vadodara",
-    "organizer": "NSS Club"
+    "title": "Inter College Cricket",
+    "category": "Sports",
+    "date": "2026-12-20",
+    "venue": "University Ground"
   }
 ]
