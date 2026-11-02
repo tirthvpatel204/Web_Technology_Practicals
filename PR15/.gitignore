@@ -1,0 +1,9 @@
+/123.zip
+/uploads/assignments/*
+!/uploads/assignments/.gitkeep
+/uploads/events/*
+!/uploads/events/.gitkeep
+/uploads/materials/*
+!/uploads/materials/.gitkeep
+/uploads/profiles/*
+!/uploads/profiles/.gitkeep

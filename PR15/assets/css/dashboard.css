@@ -1,0 +1,19 @@
+/* assets/css/dashboard.css */
+.sidebar {
+    position: fixed;
+    top: 56px; /* Places sidebar right below the 56px Bootstrap navbar */
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    padding-top: 20px;
+    background-color: #ffffff;
+    overflow-y: auto;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        position: static;
+        height: auto;
+    }
+}

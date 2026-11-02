@@ -1,0 +1,4 @@
+/* Responsive Breakpoints */
+@media (max-width: 991.98px) {
+    .hero-section { text-align: center; }
+}

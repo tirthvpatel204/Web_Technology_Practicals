@@ -1,0 +1,30 @@
+/* StudentHub Base Theme */
+:root {
+    --navy: #14213D;
+    --royal-blue: #2563EB;
+    --cyan: #06B6D4;
+    --light-grey: #F8FAFC;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-grey);
+    color: var(--navy);
+}
+
+.bg-navy { background-color: var(--navy) !important; }
+.text-navy { color: var(--navy) !important; }
+.bg-cyan { background-color: var(--cyan) !important; }
+.text-cyan { color: var(--cyan) !important; }
+.btn-cyan { background-color: var(--cyan); border-color: var(--cyan); color: #fff; }
+.btn-cyan:hover { background-color: #0891b2; border-color: #0891b2; color: #fff; }
+.btn-outline-cyan { color: var(--cyan); border-color: var(--cyan); }
+.btn-outline-cyan:hover { background-color: var(--cyan); color: #fff; }
+
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+}
